@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="assets/js/fontawesome-free-5.12.0-web/css/all.min.css">

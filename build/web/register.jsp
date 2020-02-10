@@ -37,7 +37,7 @@
             <article class="mx-auto col-12" style="max-width: 400px;">
             <h5 class="card-title pt-5">Crie sua conta</h5>
             <p>Comece com sua conta gratuita</p>
-            <form class="card-body mx-auto" method="POST" id="formulario_registro">
+            <form class="card-body mx-auto" method="POST" id="formulario_registro" action="http://localhost:8084/LeroLeroCursos/register">
 
               <label for="nome" generated="true" class="error text-danger col-12 text-left"></label> 
 
@@ -47,7 +47,7 @@
                     <i class="fa fa-user"></i>
                   </span>
                 </div>
-                <input class="form-control" name="nome" placeholder="Nome completo*" type="text">
+                <input class="form-control" name="name" placeholder="Nome completo*" type="text">
               </div>
 
               <label for="email" generated="true" class="error text-danger col-12 text-left"></label>
@@ -115,13 +115,14 @@
         <!-- JQuery Validator -->
         <script>
           $(document).ready(function() {
+              
              $("#formulario_registro").validate({
                
                rules: {
-                 nome: {required:true, minlength:3, maxlength:50, lettersonly:true},
+                 nome: {required:true, minlength:3, maxlength:50},
                  email: {required:true, email:true},
                  login: {required:true, minlength:3, maxlength:50},
-                 password: {required: true, minlength:8, maxlength:255},
+                 password: {required: true, minlength:6, maxlength:255},
                  repeatPassword: {required: true, equalTo: "#password"}
                },
                messages: {
@@ -137,7 +138,7 @@
                         maxlength: "Máximo de 50 caracteres",
                       },
                  password: {required: "A senha é obrigatória.",
-                        min: "Mínimo de 8 caracteres",
+                        min: "Mínimo de 6 caracteres",
                         maxlength: "Máximo de 255 caracteres.",
                        },
                  repeatPassword: {required: "Confirme sua senha.",

@@ -30,9 +30,11 @@
         <jsp:include page="templates/navbar.jsp"/>
 
         <div class="container">
-            <div class="card text-center mt-5">
+            <div class="card text-center mt-5">    
                 
-                <h5 class="card-title pt-5">Registro de aluno</h5>
+                <h5 class="card-title pt-5">Crie sua conta</h5>
+                <p>Comece com sua conta gratuita</p>
+                <article>
                 <form class="card-body mx-auto row" id="formulario_aluno" method="POST">
 
                   <label for="nome" generated="true" class="error text-danger col-12 text-left"></label>    
@@ -159,8 +161,12 @@
                   </div>
     
                   <div class="form-group col-12">
-                    <button class="btn btn-warning btn-block" type="submit">Registrar aluno</button>
+                    <button class="btn btn-warning btn-block" type="submit">Criar conta</button>
                   </div>
+                  <p class=" col-12">
+                    Possui uma conta?
+                    <a href="./login.jsp" class="text-warning">Acessar</a>
+                  </p>
                 </form>
                 </article>
             </div>

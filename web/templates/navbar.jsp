@@ -27,7 +27,7 @@
                   <a class="btn dropdown-toggle text-muted" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tabelas</a>
                     <div class="dropdown">
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="./register_student.jsp">Cadastrar Aluno</a>
+                            <a class="dropdown-item" href="./register.jsp">Cadastrar Aluno</a>
                             <a class="dropdown-item" href="./register_instructor.jsp">Cadastrar Instrutor</a>
                             <a class="dropdown-item" href="./register_course.jsp">Cadastrar Curso</a>
                             <a class="dropdown-item" href="./register_class.jsp">Cadastrar Turma</a>

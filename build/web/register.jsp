@@ -26,135 +26,238 @@
 
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <!-- Navbar-->
+
         <jsp:include page="templates/navbar.jsp"/>
+
         <div class="container">
-          
-          <div class="card text-center mt-5 row">
-            <article class="mx-auto col-12" style="max-width: 400px;">
-            <h5 class="card-title pt-5">Crie sua conta</h5>
-            <p>Comece com sua conta gratuita</p>
-            <form class="card-body mx-auto" method="POST" id="formulario_registro" action="http://localhost:8084/LeroLeroCursos/register">
+            <div class="card text-center mt-5">    
+                
+                <h5 class="card-title pt-5">Crie sua conta</h5>
+                <p>Comece com sua conta gratuita</p>
+                <article>
+                <form class="card-body mx-auto row" id="formulario_aluno" method="POST" action="http://localhost:8084/LeroLeroCursos/register">
 
-              <label for="nome" generated="true" class="error text-danger col-12 text-left"></label> 
+                  <label for="nome" generated="true" class="error text-danger col-12 text-left"></label>    
+                  <div class="form-group input-group col-12">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                      </span>
+                    </div>                    
+                    <input class="form-control" id="nome" name="nome" placeholder="Nome completo*" type="text">
+                  </div>      
+                  
+                  <label for="cpf" generated="true" class="error text-danger offset-0 col-6 text-left mx-0 pl-15"></label>
+                  <label for="email" generated="true" class="error text-danger offset-6 col-6 text-left m-0 pl-15"></label>
+                  <div class="col-12"></div>
+                  
+                  <div class="form-group input-group col-6">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-id-card"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" id="cpf" name="cpf" placeholder="CPF*" type="text" id="cpf">
+                  </div>
+                  
+                  
+                  <div class="form-group input-group col-6">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-envelope"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" id="email" name="email" placeholder="Endereço de email*" type="email">
+                  </div>
+                  
+                  
+                  <label for="celular" generated="true" class="error text-danger col-4 text-left m-0 pl-15"></label>
+                  <label for="cidade" generated="true" class="error text-danger col-4 offset-6 text-left m-0 pl-15"></label>
+                  <label for="cep" generated="true" class="error text-danger col-4 ml-auto  text-left m-0 pl-15"></label>
 
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-user"></i>
-                  </span>
-                </div>
-                <input class="form-control" name="name" placeholder="Nome completo*" type="text">
-              </div>
+                  <div class="col-12"></div>
 
-              <label for="email" generated="true" class="error text-danger col-12 text-left"></label>
+                  <div class="form-group input-group col-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-mobile-alt"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" id="celular" name="celular" placeholder="Celular*" type="tel">
+                  </div>
 
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-envelope"></i>
-                  </span>
-                </div>
-                <input class="form-control" name="email" placeholder="Endereço de email*" type="email">
-              </div>
+                  <div class="form-group input-group col-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-city"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" id="cidade" name="cidade" placeholder="Cidade" type="text">
+                  </div>
 
-              <label for="login" generated="true" class="error text-danger col-12 text-left"></label>
+                  <div class="form-group input-group col-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-map-marked-alt"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" id="cep" name="cep" placeholder="CEP" type="text">
+                  </div>
 
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-user"></i>
-                  </span>
-                </div>
-                <input class="form-control" name="login" placeholder="Login*" type="text">
-              </div>
+                  <label for="bairro" generated="true" class="error text-danger col-4 text-left m-0 pl-15"></label>
+                  <label for="endereco" generated="true" class="error text-danger col-8 offset-4 text-left m-0 pl-15"></label>
+                  
+                  <div class="col-12"></div>
 
-              <label for="password" generated="true" class="error text-danger col-12 text-left"></label>
+                  <div class="form-group input-group col-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-map-marked-alt"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" id="bairro" name="bairro" placeholder="Bairro" type="text">
+                  </div>
 
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                </div>
-                <input class="form-control" id="password" name="password" placeholder="Senha*" type="password">
-              </div>
+                  <div class="form-group input-group col-8">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-map-marked-alt"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" id="endereco" name="endereco" placeholder="Endereço" type="text">
+                  </div>
 
-              <label for="repeatPassword" generated="true" class="error text-danger col-12 text-left"></label>
+                  <label for="login" generated="true" class="error text-danger col-4 text-left m-0 pl-15"></label>
+                  <label for="senha" generated="true" class="error text-danger col-4 offset-4 text-left m-0 pl-15"></label>
+                  <label for="confirmPassword" generated="true" class="error text-danger col-4 offset-8 text-left m-0 pl-15"></label>
+                  
+                  <div class="col-12"></div>
 
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                </div>
-                <input class="form-control" name="repeatPassword" placeholder="Repita a senha*" type="password">
-              </div>
-              
-
-              <div class="form-group">
-                <button class="btn btn-warning btn-block" type="submit">Criar conta</button>
-              </div>
-              <p>
-                Possui uma conta?
-                <a href="./login.html" class="text-warning">Acessar</a>
-              </p>
-            </form>
-            </article>
-          </div>
+                  <div class="form-group input-group col-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-user"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" id="login" name="login" placeholder="Login*" type="text">
+                  </div>
+    
+                  <div class="form-group input-group col-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" id="senha" name="senha" placeholder="Senha*" type="password">
+                  </div>
+    
+                  <div class="form-group input-group col-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                      </span>
+                    </div>
+                    <input class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Repita a senha*" type="password">
+                  </div>
+    
+                  <div class="form-group col-12">
+                    <button class="btn btn-warning btn-block" type="submit">Criar conta</button>
+                  </div>
+                  <p class=" col-12">
+                    Possui uma conta?
+                    <a href="./login.jsp" class="text-warning">Acessar</a>
+                  </p>
+                </form>
+                </article>
+            </div>
         </div>
+            
+        </div>
+
+        
 
         <!-- JQuery -->
         <jsp:include page="templates/jquery.jsp"/>
         <!-- Bootstrap 4-->
-        <jsp:include page="templates/bootstrap4.jsp"/>
-        
+        <jsp:include page="templates/bootstrap4.jsp"/>  
+         
         <!-- JQuery Validator -->
         <script>
-          $(document).ready(function() {
-              
-             $("#formulario_registro").validate({
-               
-               rules: {
-                 nome: {required:true, minlength:3, maxlength:50},
-                 email: {required:true, email:true},
-                 login: {required:true, minlength:3, maxlength:50},
-                 password: {required: true, minlength:6, maxlength:255},
-                 repeatPassword: {required: true, equalTo: "#password"}
-               },
-               messages: {
-                 nome: {required: "Nome obrigatório.",
-                        minlength: "Mínimo de 3 caracteres.",
-                        maxlength: "Máximo de 50 caracteres.",
-                        lettersonly: "Apenas letras.",
-                      },
-                 email: {required: "Email obrigatório.",
-                         email: "Insira um email válido."},
-                 login: {required: "Login obrigatório.",
-                        minlength: "Mínimo de 3 caracteres.",
-                        maxlength: "Máximo de 50 caracteres",
-                      },
-                 password: {required: "A senha é obrigatória.",
-                        min: "Mínimo de 6 caracteres",
-                        maxlength: "Máximo de 255 caracteres.",
-                       },
-                 repeatPassword: {required: "Confirme sua senha.",
-                                  equalTo: "As senhas não correspondem."}                        
-               },
-               
-               submitHandler: function(form) {
-                 form.submit();
-               },
-                
-                })
-                
-             }
-             
-             );
-      </script>
+            $(document).ready(function() {
+               $("#formulario_aluno").validate({
+                 
+                 rules: {
+                   nome: {required:true, minlength: 3, maxlength:50, lettersonly:false},
+                   cpf: {required:true, digits:false,minlength: 11, maxlength:99},
+                   email: {required:true, email:true},
+                   celular: {required:true, minlength: 14, maxlength:15},
+                   login: {required:true, minlength: 3, maxlength:20},
+                   senha: {required:true, minlength:6, maxlength:255},
+                   
+                   endereco: {minlength: 5, maxlength:50},
+                   cidade: {minlength: 3, maxlength:30, lettersonly:false},
+                   bairro: {minlength: 3, maxlength:30, lettersonly:false},
+                   cep: {digits:true, minlength: 8, maxlength:9},
+
+                   confirmPassword: {required:true, equalTo: senha},
+                 },
+                 messages: {
+                   nome: {required: "O preenchimento do nome é obrigatório.",
+                          minlength: "O nome deve conter ao menos 3 letras.",
+                          maxlength: "O nome deve conter no máximo 50 letras.",
+                          lettersonly: "Apenas letras."
+                         },
+                   cpf: {required: "O preenchimento do cpf é obrigatório.",
+                          digits: "Por favor, apenas dígitos.",
+                          minlength: "O cpf deve conter 11 caracteres.",
+                          maxlength: "O cpf deve conter 11 caracteres."
+                         },
+                   email: {required: "O preenchimento do email é obrigatório.",
+                          email: "Por favor, insira um email válido."                          
+                         },
+                   celular: {required: "O preenchimento do celular é obrigatório.",
+                          minlength: "O número de celular deve conter ao menos 10 dígitos.",
+                          maxlength: "O número de celular deve conter no máximo 11 caracteres."
+                         },
+                   login: {required: "O preenchimento do login é obrigatório.",
+                          minlength: "O login deve conter ao menos 3 caracteres.",
+                          maxlength: "O login deve conter no máximo 20 caracteres."
+                         },
+                   senha: {required: "O preenchimento da senha é obrigatório.",
+                          minlength: "A senha deve conter ao menos 6 caracteres.",
+                          maxlength: "A senha deve conter no máximo 255 caracteres."
+                         },
+                   
+                   endereco: {minlength: "O endereço deve conter ao menos 5 caracteres.",
+                              maxlength: "O endereço deve conter no máximo 50 caracteres."
+                         },
+                   cidade: {minlength: "A cidade deve conter ao menos 3 caracteres.",
+                            maxlength: "A cidade deve conter no máximo 30 caracteres.",
+                            lettersonly: "Apenas letras.",
+                         },
+                   bairro: {minlength: "O bairro deve conter ao menos 3 caracteres.",
+                            maxlength: "O bairro deve conter no máximo 30 caracteres.",
+                            lettersonly: "Apenas letras.",
+                         },
+                   cep: {minlength: "O cep deve conter ao menos 8 caracteres.",
+                        maxlength: "O cep deve conter no máximo 9 caracteres.",
+                        digits: "Apenas dígitos."
+                        },
+                   confirmPassword: {required: "Por favor, confirme sua senha.",
+                                    equalTo: "A senha digitada não corresponde."                          
+                         },
+                 },
+                 
+                 submitHandler: function(form) {
+                   form.submit();
+                 },
+                  
+                  })
+                  
+               }
+               );
+        </script>
+        
 
     </body>
 </html>

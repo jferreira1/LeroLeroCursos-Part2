@@ -60,22 +60,7 @@ public class RegisterServlet extends HttpServlet {
         String senha = request.getParameter("senha");
         
         try {
-            String updateSQL = "INSERT INTO alunos(nome, cpf, email, celular, cidade, cep, bairro, endereco, login, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement preparedStatement = conexao.prepareStatement(updateSQL);
             
-            preparedStatement.setString(1, nome);
-            preparedStatement.setString(2, cpf);
-            preparedStatement.setString(3, email);
-            preparedStatement.setString(4, celular);
-            preparedStatement.setString(5, cidade);
-            preparedStatement.setString(6, cep);
-            preparedStatement.setString(7, bairro);
-            preparedStatement.setString(8, endereco);
-            preparedStatement.setString(9, login);
-            preparedStatement.setString(10, senha);
-            
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
             
         } catch (SQLException ex) {
             out.println("<h1>Erro de execucao de SQL" + ex.getMessage() + "</h1>");

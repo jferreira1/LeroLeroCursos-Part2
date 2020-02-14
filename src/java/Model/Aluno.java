@@ -18,6 +18,22 @@ public class Aluno {
     private String cep;
     private String comentario;
     private char aprovado;
+    
+    public Aluno() {
+        this.id = 0;
+        this.cpf = "";
+        this.nome = "";
+        this.email = "";
+        this.celular = "";
+        this.login = "";
+        this.senha = "";
+        this.endereco = "";
+        this.cidade = "";
+        this.bairro = "";
+        this.cep = "";
+        this.comentario = "";
+        this.aprovado = 'R';
+    }
 
     public Aluno(int id, String cpf, String nome, String email, String celular, String login, String senha) {
         this.id = id;
@@ -27,7 +43,25 @@ public class Aluno {
         this.celular = celular;
         this.login = login;
         this.senha = senha;
-    }     
+    }
+
+    public Aluno(int id, String cpf, String nome, String email, String celular, String login, String senha, String endereco, String cidade, String bairro, String cep, String comentario, char aprovado) {
+        this.id = id;
+        this.cpf = cpf;
+        this.nome = nome;
+        this.email = email;
+        this.celular = celular;
+        this.login = login;
+        this.senha = senha;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.cep = cep;
+        this.comentario = comentario;
+        this.aprovado = aprovado;
+    }
+    
+    
     
 
     public int getId() {

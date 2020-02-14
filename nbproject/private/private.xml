@@ -4,15 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Controller/Criptografia.java</file>
-            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/AlunoDAOMySQL.java</file>
-            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/templates/navbar.jsp</file>
             <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/Conexao.java</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Controller/AlunoController.java</file>
             <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/AlunoDAO.java</file>
-            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/register.jsp</file>
-            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/templates/jquery.jsp</file>
             <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/Aluno.java</file>
-            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Controller/RegisterServlet.java</file>
         </group>
     </open-files>
 </project-private>

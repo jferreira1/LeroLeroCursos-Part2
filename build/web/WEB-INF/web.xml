@@ -4,9 +4,17 @@
         <servlet-name>AlunoController</servlet-name>
         <servlet-class>Controller.AlunoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Cadastro</servlet-name>
+        <servlet-class>Controller.Cadastro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AlunoController</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cadastro</servlet-name>
+        <url-pattern>/Cadastro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

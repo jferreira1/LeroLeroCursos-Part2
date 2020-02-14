@@ -105,13 +105,13 @@ public class TurmaDAO {
             String sql = "UPDATE turmas SET instrutores_id=?, cursos_id=?, data_inicio=?, data_final=?, carga_horaria=? WHERE id=?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             
-            if (!"".equals(turma.getInstrutores_id())) {
+            if (turma.getInstrutores_id() != 0) {
                 ps.setInt(1, turma.getInstrutores_id());
             } else { 
                 ps.setInt(1, turmaNoBanco.getInstrutores_id());
             }
             
-            if (!"".equals(turma.getCursos_id())) {
+            if (turma.getCursos_id() != 0) {
                 ps.setInt(2, turma.getCursos_id());
             } else { 
                 ps.setInt(2, turmaNoBanco.getCursos_id());

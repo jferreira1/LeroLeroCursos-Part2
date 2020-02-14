@@ -144,7 +144,7 @@ public class InstrutorDAO {
                 ps.setString(2, instrutorNoBanco.getEmail());
             }
             
-            if (!"".equals(instrutor.getValor_hora())) {
+            if (instrutor.getValor_hora() != 0) {
                 ps.setInt(3, instrutor.getValor_hora());
             } else { 
                 ps.setInt(3, instrutorNoBanco.getValor_hora());

@@ -139,13 +139,13 @@ public class CursoDAO {
                 ps.setString(3, cursoNoBanco.getEmenta());
             }
             
-            if (!"".equals(curso.getCarga_horaria())) {
+            if (curso.getCarga_horaria() != 0) {
                 ps.setInt(4, curso.getCarga_horaria());
             } else { 
                 ps.setInt(4, cursoNoBanco.getCarga_horaria());
             }
             
-            if (!"".equals(curso.getPreco())) {
+            if (curso.getPreco() != 0) {
                 ps.setFloat(5, curso.getPreco());
             } else { 
                 ps.setFloat(5, cursoNoBanco.getPreco());
@@ -158,7 +158,7 @@ public class CursoDAO {
     }
 
 
-    public boolean deleteAdministradorPorId(int id) {
+    public boolean deleteCursoPorId(int id) {
         try {
             String sql = "DELETE FROM cursos WHERE id=?";
             PreparedStatement ps = conexao.prepareStatement(sql);

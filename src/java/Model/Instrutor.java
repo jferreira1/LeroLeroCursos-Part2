@@ -6,6 +6,7 @@ package Model;
  * @author Ferreira
  */
 public class Instrutor {
+    private int id;
     private String nome;
     private String email;
     private int valor_hora;
@@ -14,6 +15,7 @@ public class Instrutor {
     private String experiencia;
 
     public Instrutor() {
+        this.id=0;
         this.nome = "";
         this.email = "";
         this.valor_hora = 0;
@@ -23,6 +25,7 @@ public class Instrutor {
     }
 
     public Instrutor(String nome, String email, String login, String senha) {
+        this.id=0;
         this.nome = nome;
         this.email = email;
         this.login = login;
@@ -30,6 +33,15 @@ public class Instrutor {
         this.valor_hora = 0;
         this.experiencia = "";
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public String getNome() {
         return nome;

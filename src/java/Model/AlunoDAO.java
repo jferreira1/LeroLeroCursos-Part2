@@ -59,7 +59,7 @@ public class AlunoDAO {
         return false;           
     }
     
-    public void create(Aluno aluno) {
+    public boolean create(Aluno aluno) {
         
         try {
             if(this.validaCreate(aluno)){
@@ -80,12 +80,14 @@ public class AlunoDAO {
             
             ps.executeUpdate();
             ps.close();
-            }
+            return true;
+            }   
             
         } catch( SQLException e ) {
             System.out.println("Erro de SQL: " + e.getMessage());
+            
         }
-        
+        return false;
     }
     
     public Aluno getAlunoPorId(int id) {
@@ -152,7 +154,7 @@ public class AlunoDAO {
         return resultado;
     }
     
-    public void update(int id, Aluno aluno) {
+    public boolean update(int id, Aluno aluno) {
         try {
             Aluno alunoNoBanco = new Aluno();
             alunoNoBanco = this.getAlunoPorId(id);
@@ -230,15 +232,17 @@ public class AlunoDAO {
             } else { 
                 ps.setString(12, String.valueOf(alunoNoBanco.getAprovado()));
             }
+            return true;
             
             
         } catch (SQLException e) {
-            
+            System.out.println("Erro de SQL: " + e.getMessage());
         }
+        return false;
     }
 
 
-    public void deleteAlunoPorId(int id) {
+    public boolean deleteAlunoPorId(int id) {
         try {
             String sql = "DELETE FROM alunos WHERE id=?";
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -246,12 +250,12 @@ public class AlunoDAO {
       
             ps.executeUpdate();
             ps.close();
-            
+            return true;
             
         } catch(SQLException e) {
             System.out.println("Erro de SQL: " + e.getMessage());
         }
-        
+        return false;
     }
 
     

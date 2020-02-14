@@ -46,7 +46,7 @@ public class InstrutorDAO {
         return false;           
     }
     
-    public void create(Instrutor instrutor) {
+    public boolean create(Instrutor instrutor) {
         
         try {
             if(this.validaCreate(instrutor)){
@@ -63,11 +63,13 @@ public class InstrutorDAO {
             
             ps.executeUpdate();
             ps.close();
+            return true;
             }
             
         } catch( SQLException e ) {
             System.out.println("Erro de SQL: " + e.getMessage());
         }
+        return false;
         
     }
     
@@ -123,7 +125,7 @@ public class InstrutorDAO {
         return resultado;
     }
     
-    public void update(int id, Instrutor instrutor) {
+    public boolean update(int id, Instrutor instrutor) {
         try {
             Instrutor instrutorNoBanco = new Instrutor();
             instrutorNoBanco = this.getInstrutorPorId(id);
@@ -164,14 +166,15 @@ public class InstrutorDAO {
             } else { 
                 ps.setString(6, instrutorNoBanco.getExperiencia());
             }            
-            
+            return true;
         } catch (SQLException e) {
-            
+            System.out.println("Erro de SQL: " + e.getMessage());
         }
+        return false;
     }
 
 
-    public void deleteInstrutorPorId(int id) {
+    public boolean deleteInstrutorPorId(int id) {
         try {
             String sql = "DELETE FROM instrutores WHERE id=?";
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -179,12 +182,13 @@ public class InstrutorDAO {
       
             ps.executeUpdate();
             ps.close();
+            return true;
             
             
         } catch(SQLException e) {
             System.out.println("Erro de SQL: " + e.getMessage());
         }
-        
+        return false;
     }
 
     

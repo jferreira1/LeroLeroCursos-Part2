@@ -47,9 +47,10 @@ public class LoginController extends HttpServlet {
         String senha = request.getParameter("senha");
         
         String str;
-        Aluno aluno = new Aluno();
-        AlunoDAO alunoDAO = new AlunoDAO();
-        alunoDAO.getAlunoPorLogin(login);
+        
+        // Verifica se o usuário é um aluno e valida a senha.
+        AlunoDAO aluno_dao = new AlunoDAO();
+        Aluno aluno = aluno_dao.getAlunoPorLogin(login);
         if (aluno != null) {
             if (senha.equals(aluno.getSenha())) {
                 str = "Login realizado com sucesso.";
@@ -58,26 +59,39 @@ public class LoginController extends HttpServlet {
                 str = "Senha inválida.";
             }
         }
-        Instrutor instrutor = new InstrutorDAO().getInstrutorPorLogin(login);
+        
+        // Verifica se o usuário é um instrutor e valida a senha.
+        InstrutorDAO instrutor_dao = new InstrutorDAO();
+        Instrutor instrutor = instrutor_dao.getInstrutorPorLogin(login);
         if (instrutor != null) {
             str = "Login realizado com sucesso.";
-
+            
         }
         else {
             str = "Senha inválida.";
 
         }
         
-        Administrador administrador = new AdministradorDAO().getAdministradorPorLogin(login);
+        // Verifica se o usuário é um administrador e valida a senha.
+        AdministradorDAO admin_dao = new AdministradorDAO();
+        Administrador administrador = admin_dao.getAdministradorPorLogin(login);
         if (administrador != null) {
-            str = "Login realizado com sucesso.";
+            if (senha.equals(administrador.getSenha())) {
+                str = "Login realizado com sucesso.";
+            }
+            else {
+                
+                str = "Senha inválida.";
 
-        }
-        else {
-            str = "Senha inválida.";
-
+            }
         }
         
+        if ((aluno == null) && (instrutor == null) && (administrador == null)) {
+            str = "Usuário inválido.";
+        }
+        
+        PrintWriter out = response.getWriter();
+        out.println(str);
     }
 
 }

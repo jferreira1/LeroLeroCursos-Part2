@@ -101,6 +101,10 @@ public class AdministradorDAO {
                 administrador.setSenha(rs.getString("senha") );
             }
             
+            else {
+                administrador = null;
+            }
+            
         } catch( SQLException e ) {
             System.out.println("Erro de SQL: " + e.getMessage());
         }

@@ -145,6 +145,9 @@ public class AlunoDAO {
                 aluno.setComentario(rs.getString("comentario") );
                 aluno.setAprovado(rs.getString("aprovado").charAt(0) );
             }
+            else {
+                aluno = null;
+            }
             
         } catch( SQLException e ) {
             System.out.println("Erro de SQL: " + e.getMessage());

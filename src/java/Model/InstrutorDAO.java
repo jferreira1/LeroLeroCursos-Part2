@@ -91,6 +91,7 @@ public class InstrutorDAO {
                 instrutor.setSenha(rs.getString("senha") );
                 instrutor.setExperiencia(rs.getString("experiencia") );
             }
+
             
         } catch( SQLException e ) {
             System.out.println("Erro de SQL: " + e.getMessage());
@@ -115,6 +116,9 @@ public class InstrutorDAO {
                 instrutor.setLogin(rs.getString("login") );
                 instrutor.setSenha(rs.getString("senha") );
                 instrutor.setExperiencia(rs.getString("experiencia") );
+            }
+            else {
+                instrutor = null;
             }
             
         } catch( SQLException e ) {

@@ -97,8 +97,33 @@ public class InstrutorDAO {
         }
         return instrutor;
     }
+    
+    public Instrutor getInstrutorPorLogin(String login) {
+        Instrutor instrutor = new Instrutor();
+        try {
+            String sql = "SELECT * FROM instrutores WHERE login = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, login);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if ( rs.next() ) {
+                instrutor.setId(rs.getInt("id"));
+                instrutor.setNome(rs.getString("nome") );
+                instrutor.setEmail(rs.getString("email") );
+                instrutor.setValor_hora(rs.getInt("valor_hora") );
+                instrutor.setLogin(rs.getString("login") );
+                instrutor.setSenha(rs.getString("senha") );
+                instrutor.setExperiencia(rs.getString("experiencia") );
+            }
+            
+        } catch( SQLException e ) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        }
+        return instrutor;
+    }
 
-        public ArrayList<Instrutor> getLista() {
+    public ArrayList<Instrutor> getLista() {
         ArrayList<Instrutor> resultado = new ArrayList<>();
         try {            
             Statement st = conexao.createStatement();

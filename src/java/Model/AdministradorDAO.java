@@ -84,8 +84,30 @@ public class AdministradorDAO {
         }
         return administrador;
     }
+    
+    public Administrador getAdministradorPorLogin(String login) {
+        Administrador administrador = new Administrador();
+        try {
+            String sql = "SELECT * FROM administrador WHERE login = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, login);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if ( rs.next() ) {
+                administrador.setId(rs.getInt("id"));
+                administrador.setNome(rs.getString("nome") );
+                administrador.setLogin(rs.getString("login") );
+                administrador.setSenha(rs.getString("senha") );
+            }
+            
+        } catch( SQLException e ) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        }
+        return administrador;
+    }
 
-        public ArrayList<Administrador> getLista() {
+    public ArrayList<Administrador> getLista() {
         ArrayList<Administrador> resultado = new ArrayList<>();
         try {            
             Statement st = conexao.createStatement();

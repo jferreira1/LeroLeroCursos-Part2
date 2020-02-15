@@ -120,8 +120,39 @@ public class AlunoDAO {
         }
         return aluno;
     }
+    
+    public Aluno getAlunoPorLogin(String login) {
+        Aluno aluno = new Aluno();
+        try {
+            String sql = "SELECT * FROM administrador WHERE login = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, login);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if ( rs.next() ) {
+                aluno.setId(rs.getInt("id"));
+                aluno.setCpf(rs.getString("cpf") );
+                aluno.setNome(rs.getString("nome") );
+                aluno.setEmail(rs.getString("email") );
+                aluno.setCelular(rs.getString("celular") );
+                aluno.setLogin(rs.getString("login") );
+                aluno.setSenha(rs.getString("senha") );
+                aluno.setEndereco(rs.getString("endereco") );
+                aluno.setCidade(rs.getString("cidade") );
+                aluno.setBairro(rs.getString("bairro") );
+                aluno.setCep(rs.getString("cep") );
+                aluno.setComentario(rs.getString("comentario") );
+                aluno.setAprovado(rs.getString("aprovado").charAt(0) );
+            }
+            
+        } catch( SQLException e ) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        }
+        return aluno;
+    }
 
-        public ArrayList<Aluno> getLista() {
+    public ArrayList<Aluno> getLista() {
         ArrayList<Aluno> resultado = new ArrayList<>();
         try {            
             Statement st = conexao.createStatement();

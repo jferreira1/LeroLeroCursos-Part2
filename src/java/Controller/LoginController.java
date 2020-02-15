@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -39,8 +40,43 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+        
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
+        
+        String str;
+        Aluno aluno = new Aluno();
+        AlunoDAO alunoDAO = new AlunoDAO();
+        alunoDAO.getAlunoPorLogin(login);
+        if (aluno != null) {
+            if (senha.equals(aluno.getSenha())) {
+                str = "Login realizado com sucesso.";
+            }
+            else {
+                str = "Senha inválida.";
+            }
+        }
+        Instrutor instrutor = new InstrutorDAO().getInstrutorPorLogin(login);
+        if (instrutor != null) {
+            str = "Login realizado com sucesso.";
+
+        }
+        else {
+            str = "Senha inválida.";
+
+        }
+        
+        Administrador administrador = new AdministradorDAO().getAdministradorPorLogin(login);
+        if (administrador != null) {
+            str = "Login realizado com sucesso.";
+
+        }
+        else {
+            str = "Senha inválida.";
+
+        }
         
     }
 

@@ -31,13 +31,13 @@
 
         <jsp:include page="templates/navbar.jsp"/>
         <div class="container-fluid">
-            <form class="form-signin">
+            <form class="form-signin" method="post" action="http://localhost:8084/LeroLeroCursos/login">
                 <img class="mb-4" src="assets/lerolero.svg" alt="logo" width="72" height="72">
                 <h1 class="h3 mb-3 font-weight-normal">Preencha os campos</h1>
                 <label for="inputEmail" class="sr-only">Endereço de Email</label>
-                <input type="text" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
+                <input type="text" id="inputLogin" name="login" class="form-control" placeholder="Login" required autofocus>
                 <label for="inputPassword" class="sr-only">Senha</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+                <input type="password" id="inputPassword" name="senha" class="form-control" placeholder="Senha" required>
                 <div class="checkbox mb-3">
                   <label>
                     <input type="checkbox" value="remember-me"> Lembrar-me

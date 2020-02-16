@@ -20,6 +20,18 @@
         <servlet-name>InstrutorController</servlet-name>
         <servlet-class>Controller.InstrutorController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClassController</servlet-name>
+        <servlet-class>Controller.ClassController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CursoController</servlet-name>
+        <servlet-class>Controller.CursoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MatriculaController</servlet-name>
+        <servlet-class>Controller.MatriculaController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AlunoController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -39,6 +51,18 @@
     <servlet-mapping>
         <servlet-name>InstrutorController</servlet-name>
         <url-pattern>/InstrutorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClassController</servlet-name>
+        <url-pattern>/register_class</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CursoController</servlet-name>
+        <url-pattern>/register_course</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MatriculaController</servlet-name>
+        <url-pattern>/register_enrollment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -33,7 +33,7 @@
             <div class="card text-center mt-5">
                 
                 <h5 class="card-title pt-5">Registro de Matrícula</h5>
-                <form class="card-body mx-auto row" id="formulario_matricula" method="POST">
+                <form class="card-body mx-auto row" id="formulario_matricula" method="POST" action="http://localhost:8084/LeroLeroCursos/register_enrollment">
     
                   <div class="form-group input-group col-6">
                     <div class="input-group-prepend">

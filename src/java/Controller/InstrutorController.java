@@ -1,7 +1,7 @@
 package Controller;
 
-import Model.Aluno;
-import Model.DAO.AlunoDAO;
+import Model.DAO.InstrutorDAO;
+import Model.Instrutor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,12 +15,12 @@ import javax.servlet.http.HttpSession;
  *
  * @author Ferreira
  */
-public class AlunoController extends HttpServlet {
+public class InstrutorController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher resposta = request.getRequestDispatcher("register.jsp");
+        RequestDispatcher resposta = request.getRequestDispatcher("register_instructor.jsp");
         resposta.forward(request, response);
         
     }
@@ -29,25 +29,24 @@ public class AlunoController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Aluno aluno = new Aluno();
-        aluno.setNome(request.getParameter("nome"));
-        aluno.setCpf(request.getParameter("cpf"));
-        aluno.setEmail(request.getParameter("email"));
-        aluno.setCelular(request.getParameter("celular"));
-        aluno.setCidade(request.getParameter("cidade"));
-        aluno.setCep(request.getParameter("cep"));
-        aluno.setBairro(request.getParameter("bairro"));
-        aluno.setEndereco(request.getParameter("endereco"));
-        aluno.setLogin(request.getParameter("login"));
+        Instrutor instrutor = new Instrutor();
+        instrutor.setNome(request.getParameter("nome"));
+        instrutor.setEmail(request.getParameter("email"));
+        String auxValor_hora = request.getParameter("valor_hora");
+        Integer valor_hora = Integer.parseInt(auxValor_hora);
+        instrutor.setValor_hora(valor_hora);
+        instrutor.setLogin(request.getParameter("login"));
+        instrutor.setExperiencia(request.getParameter("experiencia"));
+        
         String auxSenha = (String) request.getAttribute("senha");
-        aluno.setSenha(auxSenha);
+        instrutor.setSenha(auxSenha);
             
-        AlunoDAO dao = new AlunoDAO();
-        dao.create(aluno);
+        InstrutorDAO dao = new InstrutorDAO();
+        dao.create(instrutor);
         
         HttpSession session = request.getSession();
-        session.setAttribute("usertype", aluno);
-        session.setAttribute("username", aluno.getLogin());
+        session.setAttribute("usertype", instrutor);
+        session.setAttribute("username", instrutor.getLogin());
         session.setAttribute("status", "ok");
                 
         RequestDispatcher resposta = request.getRequestDispatcher("/perfil");

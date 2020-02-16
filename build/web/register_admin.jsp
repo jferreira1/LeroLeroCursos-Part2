@@ -35,7 +35,7 @@
             <div class="card text-center mt-5">
                 
                 <h5 class="card-title pt-5">Registro de Administrador</h5>
-                <form class="card-body mx-auto row justify-content-center" id="formulario_admin" method="POST">
+                <form class="card-body mx-auto row justify-content-center" id="formulario_admin" method="POST" action="http://localhost:8084/LeroLeroCursos/register_admin">
 
                   <label for="nome" generated="true" class="error text-danger col-7 text-left"></label>    
     

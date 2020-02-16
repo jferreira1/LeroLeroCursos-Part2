@@ -41,8 +41,18 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         
-            RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
-            resposta.forward(request, response);
+        HttpSession session = request.getSession();
+        Object status = session.getAttribute("status");
+        if (status != null) {
+            String auxStatus = (String) status;
+            if(auxStatus.equals("ok")) {
+                response.sendRedirect("./perfil");
+            }
+            
+        }
+        
+        RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
+        resposta.forward(request, response);
     }
 
 
@@ -53,13 +63,13 @@ public class LoginController extends HttpServlet {
         response.setContentType("text/html");
         
         String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
+        String auxSenha = (String) request.getAttribute("senha");
                
         // Verifica se o usuário é um aluno e valida a senha.
         AlunoDAO aluno_dao = new AlunoDAO();
         Aluno aluno = aluno_dao.getAlunoPorLogin(login);
         if (aluno != null) {
-            if (senha.equals(aluno.getSenha())) {
+            if (auxSenha.equals(aluno.getSenha())) {
                 
                 HttpSession session = request.getSession();
                 session.setAttribute("usertype", "aluno");
@@ -77,7 +87,7 @@ public class LoginController extends HttpServlet {
         InstrutorDAO instrutor_dao = new InstrutorDAO();
         Instrutor instrutor = instrutor_dao.getInstrutorPorLogin(login);
         if (instrutor != null) {
-            if (senha.equals(instrutor.getSenha())) {
+            if (auxSenha.equals(instrutor.getSenha())) {
                 
                 HttpSession session = request.getSession();
                 session.setAttribute("usertype", "instrutor");
@@ -95,7 +105,7 @@ public class LoginController extends HttpServlet {
         AdministradorDAO admin_dao = new AdministradorDAO();
         Administrador administrador = admin_dao.getAdministradorPorLogin(login);
         if (administrador != null) {
-            if (senha.equals(administrador.getSenha())) {
+            if (auxSenha.equals(administrador.getSenha())) {
                                 
                 HttpSession session = request.getSession();
                 session.setAttribute("usertype", "administrador");

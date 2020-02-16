@@ -25,19 +25,7 @@ public class CadastroController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        response.setContentType("text/html");
-        HttpSession session = request.getSession();
-        Object status = session.getAttribute("status");
-        if (status == "ok") {
-            RequestDispatcher resposta = request.getRequestDispatcher("area_aluno.jsp");
-            resposta.forward(request, response);
-        }
-        else {
-            RequestDispatcher resposta = request.getRequestDispatcher("/login");
-            resposta.forward(request, response);
-        }
-        
+                
     }
 
     @Override

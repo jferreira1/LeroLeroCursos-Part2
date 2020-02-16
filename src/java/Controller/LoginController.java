@@ -6,10 +6,12 @@ import Model.DAO.InstrutorDAO;
 import Model.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -55,10 +57,17 @@ public class LoginController extends HttpServlet {
         Aluno aluno = aluno_dao.getAlunoPorLogin(login);
         if (aluno != null) {
             if (senha.equals(aluno.getSenha())) {
-                str = "Login realizado com sucesso. 1";
+                
+                HttpSession session = request.getSession();
+                session.setAttribute("username", aluno.getLogin());
+                session.setAttribute("logged-in", "true");
+                
+                RequestDispatcher resposta = request.getRequestDispatcher("");
             }
             else {
-                str = "Senha inválida. 1";
+                
+                RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
+                resposta.forward(request, response);
             }
         }       
         // Verifica se o usuário é um instrutor e valida a senha.
@@ -66,10 +75,18 @@ public class LoginController extends HttpServlet {
         Instrutor instrutor = instrutor_dao.getInstrutorPorLogin(login);
         if (instrutor != null) {
             if (senha.equals(instrutor.getSenha())) {
-                str = "Login realizado com sucesso. 2";
+                
+                HttpSession session = request.getSession();
+                session.setAttribute("username", instrutor.getLogin());
+                session.setAttribute("logged-in", "true");
+                
+                RequestDispatcher resposta = request.getRequestDispatcher("");
             }
             else {
-                str = "Senha inválida. 2";
+                
+                RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
+                resposta.forward(request, response);
+                
             }
         }       
         // Verifica se o usuário é um administrador e valida a senha.
@@ -77,24 +94,26 @@ public class LoginController extends HttpServlet {
         Administrador administrador = admin_dao.getAdministradorPorLogin(login);
         if (administrador != null) {
             if (senha.equals(administrador.getSenha())) {
-                str = "Login realizado com sucesso. 3";
+                                
+                HttpSession session = request.getSession();
+                session.setAttribute("username", administrador.getLogin());
+                session.setAttribute("logged-in", "true");
+                
+                RequestDispatcher resposta = request.getRequestDispatcher("");
             }
             else {
                 
-                str = "Senha inválida. 3";
+                RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
+                resposta.forward(request, response);
 
             }
-        }      
-        if ((aluno == null) && (instrutor == null) && (administrador == null)) {
-            str = "Usuário inválido.";
         }
-        PrintWriter out = response.getWriter();
-        out.println(str);
-        out.println(login);
-        out.println(senha);
-        out.println(aluno);
-        out.println(instrutor);
-        out.println(administrador);
+        if ((aluno == null) && (instrutor == null) && (administrador == null)) {
+            
+            RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
+            resposta.forward(request, response);
+        }
+        
         
     }
 

@@ -28,11 +28,11 @@
                     <div class="dropdown">
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="./register">Cadastrar Aluno</a>
-                            <a class="dropdown-item" href="./register_instructor.jsp">Cadastrar Instrutor</a>
-                            <a class="dropdown-item" href="./register_course.jsp">Cadastrar Curso</a>
-                            <a class="dropdown-item" href="./register_class.jsp">Cadastrar Turma</a>
-                            <a class="dropdown-item" href="./register_enrollment.jsp">Cadastrar Matrícula</a>
-                            <a class="dropdown-item" href="./register_admin.jsp">Cadastrar Admin</a>
+                            <a class="dropdown-item" href="./register_instructor">Cadastrar Instrutor</a>
+                            <a class="dropdown-item" href="./register_course">Cadastrar Curso</a>
+                            <a class="dropdown-item" href="./register_class">Cadastrar Turma</a>
+                            <a class="dropdown-item" href="./register_enrollment">Cadastrar Matrícula</a>
+                            <a class="dropdown-item" href="./register_admin">Cadastrar Admin</a>
                         </div>
                     </div>
                 </li>

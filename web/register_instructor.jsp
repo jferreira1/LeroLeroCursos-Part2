@@ -36,7 +36,7 @@
                 
                 <h5 class="card-title pt-5">Registro de Instrutor</h5>
 
-                <form class="card-body mx-auto row" id="formulario_instrutor" method="POST">
+                <form class="card-body mx-auto row" id="formulario_instrutor" method="POST" action="http://localhost:8084/LeroLeroCursos/register_instructor">
 
 
                   <label for="nome" generated="true" class="error text-danger col-12 text-left"></label>

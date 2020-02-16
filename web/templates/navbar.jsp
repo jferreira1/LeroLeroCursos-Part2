@@ -20,14 +20,14 @@
                   <a class="nav-link" href="./comments.jsp">Comentários</a>
                 </li>
                 <li class="nav-item p-2">
-                    <a class="nav-link" href="./register.jsp">Cadastro</a>
+                    <a class="nav-link" href="./register">Cadastro</a>
                 </li>
 
                 <li class="nav-item p-2">
                   <a class="btn dropdown-toggle text-muted" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tabelas</a>
                     <div class="dropdown">
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="./register_student.jsp">Cadastrar Aluno</a>
+                            <a class="dropdown-item" href="./register">Cadastrar Aluno</a>
                             <a class="dropdown-item" href="./register_instructor.jsp">Cadastrar Instrutor</a>
                             <a class="dropdown-item" href="./register_course.jsp">Cadastrar Curso</a>
                             <a class="dropdown-item" href="./register_class.jsp">Cadastrar Turma</a>
@@ -38,7 +38,7 @@
                 </li>
 
                 <li class="nav-item p-2">
-                    <a class="btn btn-outline-dark" href="./login.jsp">Acessar</a>
+                    <a class="btn btn-outline-dark" href="./login">Acessar</a>
                 </li>
               </ul>
             </div>

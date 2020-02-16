@@ -1,3 +1,8 @@
+<%@page import="Model.Aluno"%>
+<%@page import="Model.DAO.AlunoDAO"%>
+<%@page import="Model.Turma"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.DAO.TurmaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -33,7 +38,7 @@
             <div class="card text-center mt-5">
                 
                 <h5 class="card-title pt-5">Registro de Matrícula</h5>
-                <form class="card-body mx-auto row" id="formulario_matricula" method="POST">
+                <form class="card-body mx-auto row" id="formulario_matricula" method="POST" action="http://localhost:8084/LeroLeroCursos/register_enrollment">
     
                   <div class="form-group input-group col-6">
                     <div class="input-group-prepend">
@@ -43,6 +48,13 @@
                     </div>
                     <select class="form-control" name="selecionar_turma">
                         <option>Selecionar Turma*</option>
+                        <%
+                        TurmaDAO daoTurmas = new TurmaDAO();
+                        ArrayList<Turma> listaTurmas = daoTurmas.getLista();
+                        for(Turma t : listaTurmas) { %>    
+                            <option>  <%= t.getId()%> </option>
+                      <%}
+                        %>
                     </select>   
                   </div>
                       
@@ -54,6 +66,13 @@
                     </div>
                     <select class="form-control" name="selecionar_aluno">
                         <option>Selecionar Aluno*</option>
+                        <%
+                        AlunoDAO daoAlunos = new AlunoDAO();
+                        ArrayList<Aluno> listaAlunos = daoAlunos.getLista();
+                        for(Aluno a : listaAlunos) { %>    
+                            <option>  <%= a.getNome()%> </option>
+                      <%}
+                        %>
                     </select>
                   </div>
 

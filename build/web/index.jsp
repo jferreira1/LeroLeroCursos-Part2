@@ -1,3 +1,9 @@
+<%@page import="Model.DAO.InstrutorDAO"%>
+<%@page import="Model.Turma"%>
+<%@page import="Model.DAO.TurmaDAO"%>
+<%@page import="Model.Curso"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.DAO.CursoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -32,54 +38,79 @@
         <div class="container-fluid">
             <!-- Conteudo aqui -->
             
-            <!-- Cards -->
+            
+            
+            <%
+            CursoDAO daoCursos = new CursoDAO();
+            TurmaDAO daoTurmas = new TurmaDAO();
+            InstrutorDAO daoInstrutor = new InstrutorDAO();
+            ArrayList<Turma> listaTurmas = daoTurmas.getLista();
+            for(Turma t : listaTurmas) { 
+            Curso c = daoCursos.getCursoPorId(t.getCursos_id());
+            %>    
+
+<!-- Cards -->
             <div class="card-columns">
                 <div class="col mb-4">
                   <div class="card h-100">
-                    <img src="assets//images/curso_prog.jpg" class="card-img-top" alt="Alunos de programação em uma mesa.">
+                    <img src="assets/images/cursos/<%=c.getId()%>.jpg" class="card-img-top">
                     <div class="card-body">
-                      <h5 class="card-title">Curso de Programação Java</h5>
-                      <p class="card-text">Aprenda Java do Básico até Orientação a Objetos, Herança e Polimorfismo, Collections, Threads e muito mais!</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col mb-4">
-                  <div class="card h-100">
-                    <img src="assets//images/curso_redes.png" class="card-img-top" alt="Um rack de servidor.">
-                    <div class="card-body">
-                      <h5 class="card-title">Curso de Redes de Computadores</h5>
-                      <p class="card-text">Focando na Internet e nas questões fundamentalmente importantes das redes, este curso fornece uma excelente base para pessoas interessadas em ciência da computação e engenharia elétrica, sem exigir amplo conhecimento de programação ou matemática.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col mb-4">
-                  <div class="card h-100">
-                    <img src="assets//images/curso_robot.jpg" class="card-img-top" alt="Um robô humanoide">
-                    <div class="card-body">
-                      <h5 class="card-title">Curso de Robótica</h5>
-                      <p class="card-text">Este curso preparará o aluno para atuar em uma das áreas mais promissoras do mercado de trabalho atualmente. Com a Robótica Educacional, o aluno será capaz de conhecer os diversos tipos de mecanismos tanto motorizado quanto a parte de programação.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col mb-4">
-                  <div class="card h-100">
-                    <img src="assets/images/curso_fncs.jpg" class="card-img-top" alt="Um executivo lendo um jornal financeiro.">
-                    <div class="card-body">
-                      <h5 class="card-title">Curso de Educação Financeira</h5>
-                      <p class="card-text">Você aprenderá sobre o sistema financeiro, componentes de risco, tipos de produtos e serviços bancários, bem como a forma mais vantajosa para negociar possíveis dívidas.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="card h-100">
-                      <img src="assets//images/curso_mktng.jpg" class="card-img-top" alt="Um executivo lendo um jornal financeiro.">
-                      <div class="card-body">
-                        <h5 class="card-title">Curso de Marketing Digital</h5>
-                        <p class="card-text">Você aprenderá porque é importante monitorar os resultados das suas ações, com o uso das métricas, e descobrirá as várias etapas dessa metodologia. Saberá, ainda, como melhorar a gestão e a integração dos times de marketing e vendas e como dar o próximo passo, elaborando o seu próprio departamento de marketing digital.</p>
+                      <h5 class="card-title"><%=c.getNome()%></h5>
+                      <div class="card-text">
+                          <h5>Professor:</h5>
+                          <p><%= daoInstrutor.getInstrutorPorId(t.getInstrutores_id())%></p>
+                          <h5>Data de Início:</h5>
+                          <p><%= t.getData_inicio()%></p>
+                          <h5>Data de Término:</h5>
+                          <p><%= t.getData_final()%></p>
+
                       </div>
+                      
+                      <p class="text-right">
+                        <button type="button" class="btn" data-toggle="modal" data-target="#<%= c.getId() + "Modal"%>">Mais informações</button>
+                      </p>
                     </div>
                   </div>
+                </div>          
+                
+            
+            <!-- Modal -->
+    
+            <div class="modal" tabindex="-1" role="dialog" id="<%= c.getId() + "Modal"%>">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title"><%= c.getNome()%></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Ementa: </h5>
+                    <p>
+                        <%= c.getEmenta()%>
+                    </p>
+                    <h5>Requisitos: </h5>
+                    <p>
+                        <%= c.getRequisito()%>
+                    </p>
+                    <h5>Carga Horária: </h5>
+                    <p>
+                        <%= c.getCarga_horaria()%>
+                    </p>
+                    <h5>Preço: </h5>
+                    <p>
+                        R$ <%= c.getPreco()%>
+                    </p>
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
               </div>
+            </div>
+          </div>
+          <%} %>
         
         </div>
 

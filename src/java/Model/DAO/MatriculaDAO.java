@@ -1,5 +1,7 @@
-package Model;
+package Model.DAO;
 
+import Model.Conexao;
+import Model.Matricula;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

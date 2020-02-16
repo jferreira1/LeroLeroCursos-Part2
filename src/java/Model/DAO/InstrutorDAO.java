@@ -1,5 +1,7 @@
-package Model;
+package Model.DAO;
 
+import Model.Conexao;
+import Model.Instrutor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

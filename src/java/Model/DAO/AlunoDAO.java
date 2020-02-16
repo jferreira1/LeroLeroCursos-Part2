@@ -1,8 +1,11 @@
-package Model;
+package Model.DAO;
 
+import Model.Aluno;
+import Model.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -160,6 +163,8 @@ public class AlunoDAO {
         try {            
             Statement st = conexao.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM alunos");
+
+            
             while(rs.next()) {
                 
                 Aluno aluno = new Aluno();

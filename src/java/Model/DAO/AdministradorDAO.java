@@ -1,5 +1,7 @@
-package Model;
+package Model.DAO;
 
+import Model.Administrador;
+import Model.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -93,6 +95,8 @@ public class AdministradorDAO {
             ps.setString(1, login);
             
             ResultSet rs = ps.executeQuery();
+
+            
             
             if ( rs.next() ) {
                 administrador.setId(rs.getInt("id"));

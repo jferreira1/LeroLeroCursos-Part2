@@ -39,8 +39,12 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html");
+        
+            RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
+            resposta.forward(request, response);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -50,8 +54,7 @@ public class LoginController extends HttpServlet {
         
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
-        
-        String str = "";        
+               
         // Verifica se o usuário é um aluno e valida a senha.
         AlunoDAO aluno_dao = new AlunoDAO();
         Aluno aluno = aluno_dao.getAlunoPorLogin(login);
@@ -59,15 +62,15 @@ public class LoginController extends HttpServlet {
             if (senha.equals(aluno.getSenha())) {
                 
                 HttpSession session = request.getSession();
+                session.setAttribute("usertype", "aluno");
                 session.setAttribute("username", aluno.getLogin());
-                session.setAttribute("logged-in", "true");
+                session.setAttribute("status", "ok");
                 
                 RequestDispatcher resposta = request.getRequestDispatcher("");
+                resposta.forward(request, response);
             }
             else {
-                
-                RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
-                resposta.forward(request, response);
+                response.sendRedirect("./login");
             }
         }       
         // Verifica se o usuário é um instrutor e valida a senha.
@@ -77,16 +80,15 @@ public class LoginController extends HttpServlet {
             if (senha.equals(instrutor.getSenha())) {
                 
                 HttpSession session = request.getSession();
+                session.setAttribute("usertype", "instrutor");
                 session.setAttribute("username", instrutor.getLogin());
-                session.setAttribute("logged-in", "true");
+                session.setAttribute("status", "ok");
                 
                 RequestDispatcher resposta = request.getRequestDispatcher("");
+                resposta.forward(request, response);
             }
             else {
-                
-                RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
-                resposta.forward(request, response);
-                
+                response.sendRedirect("./login");    
             }
         }       
         // Verifica se o usuário é um administrador e valida a senha.
@@ -96,22 +98,19 @@ public class LoginController extends HttpServlet {
             if (senha.equals(administrador.getSenha())) {
                                 
                 HttpSession session = request.getSession();
+                session.setAttribute("usertype", "administrador");
                 session.setAttribute("username", administrador.getLogin());
-                session.setAttribute("logged-in", "true");
+                session.setAttribute("status", "ok");
                 
                 RequestDispatcher resposta = request.getRequestDispatcher("");
+                resposta.forward(request, response);
             }
             else {
-                
-                RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
-                resposta.forward(request, response);
-
+                response.sendRedirect("./login");
             }
         }
         if ((aluno == null) && (instrutor == null) && (administrador == null)) {
-            
-            RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
-            resposta.forward(request, response);
+            response.sendRedirect("./login");
         }
         
         

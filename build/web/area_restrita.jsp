@@ -146,10 +146,10 @@
                         <i class="fas fa-map-marker-alt text-muted"> id </i>
                         <p class="card-text">Login</p>
                         <div class=" row justify-content-start">
-                            <button type="button" class="btn col-8 offset-2 my-2">Alterar dados dos alunos</button>
-                            <button type="button" class="btn col-8 offset-2 my-2">Alterar dados dos instrutores</button>
-                            <button type="button" class="btn col-8 offset-2 my-2">Alterar dados dos cursos</button>
-                            <button type="button" class="btn col-8 offset-2 my-2">Alterar dados das turmas</button>
+                            <button type="button" class="btn col-8 offset-2 my-2" href="http://localhost:8084/LeroLeroCursos/register">Alterar dados dos alunos</button>
+                            <button type="button" class="btn col-8 offset-2 my-2" href="http://localhost:8084/LeroLeroCursos/register_instructor">Alterar dados dos instrutores</button>
+                            <button type="button" class="btn col-8 offset-2 my-2" href="http://localhost:8084/LeroLeroCursos/register_courses">Alterar dados dos cursos</button>
+                            <button type="button" class="btn col-8 offset-2 my-2" href="http://localhost:8084/LeroLeroCursos/register_class">Alterar dados das turmas</button>
                             <button type="button" class="btn col-8 offset-2 my-2">Visualizar notas</button>
                             <button type="button" class="btn col-8 offset-2 my-2">Visualizar grade de instrutores</button>
                             <button type="button" class="btn col-8 offset-2 my-2">Gerenciar imagens</button>

@@ -1,3 +1,4 @@
+<%@page import="Model.Instrutor"%>
 <%@page import="Model.DAO.InstrutorDAO"%>
 <%@page import="Model.Turma"%>
 <%@page import="Model.DAO.TurmaDAO"%>
@@ -37,9 +38,7 @@
 
         <div class="container-fluid">
             <!-- Conteudo aqui -->
-            
-            
-            
+
             <%
             CursoDAO daoCursos = new CursoDAO();
             TurmaDAO daoTurmas = new TurmaDAO();
@@ -47,18 +46,19 @@
             ArrayList<Turma> listaTurmas = daoTurmas.getLista();
             for(Turma t : listaTurmas) { 
             Curso c = daoCursos.getCursoPorId(t.getCursos_id());
+            Instrutor i = daoInstrutor.getInstrutorPorId(t.getInstrutores_id());
             %>    
 
 <!-- Cards -->
-            <div class="card-columns">
+            <div class="card-deck">
                 <div class="col mb-4">
                   <div class="card h-100">
-                    <img src="assets/images/cursos/<%=c.getId()%>.jpg" class="card-img-top">
+                    <img src="assets/images/cursos/<%=c.getId()%>.jpg" class="card-img-top" >
                     <div class="card-body">
                       <h5 class="card-title"><%=c.getNome()%></h5>
                       <div class="card-text">
                           <h5>Professor:</h5>
-                          <p><%= daoInstrutor.getInstrutorPorId(t.getInstrutores_id())%></p>
+                          <p><%= i.getNome() %></p>
                           <h5>Data de Início:</h5>
                           <p><%= t.getData_inicio()%></p>
                           <h5>Data de Término:</h5>

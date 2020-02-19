@@ -127,7 +127,7 @@ public class AlunoDAO {
     public Aluno getAlunoPorLogin(String login) {
         Aluno aluno = new Aluno();
         try {
-            String sql = "SELECT * FROM administrador WHERE login = ?";
+            String sql = "SELECT * FROM alunos WHERE login = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setString(1, login);
             

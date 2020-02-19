@@ -11,7 +11,7 @@
                     if (auxUsertype.equals("aluno")) { %>
                     
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <a class="navbar-brand p-2 mt-2" href="./index.jsp"><img src="assets/lerolero.svg" width="40" height="40" class="d-inline-block align-top mr-2" alt="logo">LeroLero</a>
+            <a class="navbar-brand p-2 mt-2" href="./index"><img src="assets/lerolero.svg" width="40" height="40" class="d-inline-block align-top mr-2" alt="logo">LeroLero</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,10 +35,10 @@
                 <li class="nav-item p-2">
                     <a class="nav-link" href="./register">Cadastro</a>
                 </li>
-
                 <li class="nav-item p-2">
-                    <a class="btn btn-outline-dark" href="./login">Acessar</a>
+                    <a class="nav-link" href="./logout">Logout</a>
                 </li>
+
               </ul>
             </div>
           </nav>
@@ -46,7 +46,7 @@
         <%} else if(auxUsertype.equals("instrutor")) {%>
         <!-- Navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <a class="navbar-brand p-2 mt-2" href="./index.jsp"><img src="assets/lerolero.svg" width="40" height="40" class="d-inline-block align-top mr-2" alt="logo">LeroLero</a>
+            <a class="navbar-brand p-2 mt-2" href="./index"><img src="assets/lerolero.svg" width="40" height="40" class="d-inline-block align-top mr-2" alt="logo">LeroLero</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -71,7 +71,7 @@
                     <a class="nav-link" href="./register">Cadastro</a>
                 </li>
                 <li class="nav-item p-2">
-                    <a class="btn btn-outline-dark" href="./login">Acessar</a>
+                    <a class="nav-link" href="./logout">Logout</a>
                 </li>
               </ul>
             </div>
@@ -81,7 +81,7 @@
         <%} else if(auxUsertype.equals("administrador")) {%>
         <!-- Navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <a class="navbar-brand p-2 mt-2" href="./index.jsp"><img src="assets/lerolero.svg" width="40" height="40" class="d-inline-block align-top mr-2" alt="logo">LeroLero</a>
+            <a class="navbar-brand p-2 mt-2" href="./index"><img src="assets/lerolero.svg" width="40" height="40" class="d-inline-block align-top mr-2" alt="logo">LeroLero</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -121,7 +121,7 @@
                 </li>
 
                 <li class="nav-item p-2">
-                    <a class="btn btn-outline-dark" href="./login">Acessar</a>
+                    <a class="nav-link" href="./logout">Logout</a>
                 </li>
               </ul>
             </div>
@@ -135,12 +135,10 @@
         } else { response.sendRedirect("./login"); }
 
 
-} else { response.sendRedirect("./login"); }
-
-%>
+} else { %>
 <!-- Navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <a class="navbar-brand p-2 mt-2" href="./index.jsp"><img src="assets/lerolero.svg" width="40" height="40" class="d-inline-block align-top mr-2" alt="logo">LeroLero</a>
+            <a class="navbar-brand p-2 mt-2" href="./index"><img src="assets/lerolero.svg" width="40" height="40" class="d-inline-block align-top mr-2" alt="logo">LeroLero</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -169,7 +167,11 @@
               </ul>
             </div>
           </nav>
-        <!--  Fim da Navbar-->            
+        <!--  Fim da Navbar-->         
+                
+            <% }
+
+%>
 <%
 %>
     

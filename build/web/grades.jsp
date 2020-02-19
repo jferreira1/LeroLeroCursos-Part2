@@ -55,42 +55,8 @@
                 
                 <h5 class="card-title pt-5">Notas</h5>
                 
-    
-                  <div class="form-group input-group col-6">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fas fa-graduation-cap"></i>
-                      </span>
-                    </div>
-                    <select class="form-control" name="selecionar_turma">
-                        <option>Selecionar Turma*</option>
-                        <%
-                        TurmaDAO daoTurmas = new TurmaDAO();
-                        ArrayList<Turma> listaTurmas = daoTurmas.getLista();
-                        for(Turma t : listaTurmas) { %>    
-                            <option>  <%= t.getId()%> </option>
-                      <%}
-                        %>
-                    </select>   
-                  </div>
-                      
-                  <div class="form-group input-group col-6">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="fa fa-user"></i>
-                      </span>
-                    </div>
-                    <select class="form-control" name="selecionar_aluno">
-                        <option><%= aluno.getNome()%></option>
-                    </select>
-                  </div>
-
-
-                  <div class="form-group col-12">
-                    <button class="btn btn-warning btn-block" type="submit">Matricular</button>
-                  </div>
-                </form>
-                </article>
+                Turmas/Cursos:                
+                Notas:
             </div>
         </div>
 

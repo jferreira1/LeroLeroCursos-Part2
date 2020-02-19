@@ -39,7 +39,7 @@
             <div>
                 <h1 class="text-center font-weight-light pb-4 text-secondary">Nossos instrutores</h1>
             </div>
-            
+            <div class="card-columns">
             <%
             TurmaDAO daoTurma = new TurmaDAO();
             ArrayList<Turma> listaTurmas = daoTurma.getLista();
@@ -54,9 +54,9 @@
             
             %>    
             
-            <!-- Cards -->
-            <div class="row justify-content-lg-center" id="cards">
-                <div class="col-lg-4">
+            
+
+                <div class="col mb-4">
                   <div class="card h-100">
                     <img src="assets/images/instrutores/<%=i.getId()%>.jpg" class="card-img-top" alt="Foto do <%=i.getNome()%>">
                     <div class="card-body">
@@ -80,10 +80,10 @@
                     </div>
                   </div>
                 </div>
-          </div>      
+    
 <%} %>
         </div>
-
+</div>
         <!-- JQuery -->
         <script src="assets/js/jquery-3.4.1.min.js"></script>
         <script src="assets/js/jquery.validate.min.js"></script> 

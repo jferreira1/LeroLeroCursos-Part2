@@ -38,7 +38,7 @@
 
         <div class="container-fluid">
             <!-- Conteudo aqui -->
-
+            <div class="card-columns">
             <%
             CursoDAO daoCursos = new CursoDAO();
             TurmaDAO daoTurmas = new TurmaDAO();
@@ -50,8 +50,8 @@
             %>    
 
 <!-- Cards -->
-            <div class="row justify-content-lg-center">
-                <div class="col-lg-4">
+            
+                <div class="col mb-4">
                   <div class="card h-100">
                     <img src="assets/images/cursos/<%=c.getId()%>.jpg" class="card-img-top" alt="Foto do <%= c.getNome()%>">
                     <div class="card-body">
@@ -102,17 +102,32 @@
                     <p>
                         R$ <%= c.getPreco()%>
                     </p>
+                    </div>
+                    <div class="modal-footer">
+                    <% 
+                     Object status = session.getAttribute("status");
+
+                    if (status != null) {
+                        Object usertype = session.getAttribute("usertype");
+                        String auxUsertype = (String) usertype;
+                        String auxStatus = (String) status;
+                        if ((auxStatus.equals("ok")) && (auxUsertype.equals("aluno"))) { %>
+                            
+                                <a href="./enroll" type="button" class="btn btn-warning col-10 offset-2 my-2">Matricular-se</a>
+                                
+                    
+                    <%}} %>
                   
-                </div>
-                <div class="modal-footer">
+                
+                
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 </div>
               </div>
             </div>
           </div>
-          </div>
+          
           <%} %>
-        
+        </div>
         
 </div> 
         <!-- JQuery -->

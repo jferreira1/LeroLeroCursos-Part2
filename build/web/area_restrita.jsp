@@ -79,7 +79,7 @@
                             <!-- Adicionar links -->
                             <a href="./update" type="button" class="btn btn-warning col-8 offset-2 my-2">Atualizar dados</a>
                             <a href="./enroll" type="button" class="btn btn-warning col-8 offset-2 my-2">Matricular-se</a>
-                            <button type="button" class="btn col-8 offset-2 my-2">Notas</button>
+                            <a href="./grades" type="button" class="btn btn-warning col-8 offset-2 my-2">Notas</a>
                             <button type="button" class="btn col-8 offset-2 my-2">Comentários</button>
                         </div>
                     </div>

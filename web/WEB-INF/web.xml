@@ -48,6 +48,10 @@
         <servlet-name>EnrollController</servlet-name>
         <servlet-class>Controller.Aluno.EnrollController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GradesController</servlet-name>
+        <servlet-class>Controller.Aluno.GradesController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AlunoController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>EnrollController</servlet-name>
         <url-pattern>/enroll</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GradesController</servlet-name>
+        <url-pattern>/grades</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

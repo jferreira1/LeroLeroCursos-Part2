@@ -50,8 +50,8 @@
             %>    
 
 <!-- Cards -->
-            <div class="card-deck">
-                <div class="col mb-4">
+            <div class="row justify-content-lg-center">
+                <div class="col-lg-4">
                   <div class="card h-100">
                     <img src="assets/images/cursos/<%=c.getId()%>.jpg" class="card-img-top" >
                     <div class="card-body">
@@ -67,7 +67,7 @@
                       </div>
                       
                       <p class="text-right">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#<%= c.getId() + "Modal"%>">Mais informações</button>
+                        <button type="button" class="btn" data-toggle="modal" data-target="#modal_<%= c.getNome()%>">Mais informações</button>
                       </p>
                     </div>
                   </div>
@@ -76,7 +76,7 @@
             
             <!-- Modal -->
     
-            <div class="modal" tabindex="-1" role="dialog" id="<%= c.getId() + "Modal"%>">
+            <div class="modal" tabindex="-1" role="dialog" id="modal_<%= c.getNome()%>">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -105,15 +105,16 @@
                   
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 </div>
               </div>
             </div>
           </div>
+          </div>
           <%} %>
         
-        </div>
-
+        
+</div> 
         <!-- JQuery -->
         <jsp:include page="templates/jquery.jsp"/>
         <!-- Bootstrap 4-->

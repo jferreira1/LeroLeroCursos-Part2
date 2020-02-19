@@ -1,3 +1,8 @@
+<%@page import="Model.DAO.MatriculaDAO"%>
+<%@page import="Model.Matricula"%>
+<%@page import="Model.Instrutor"%>
+<%@page import="Model.Curso"%>
+<%@page import="Model.DAO.CursoDAO"%>
 <%@page import="Model.Aluno"%>
 <%@page import="Model.DAO.AlunoDAO"%>
 <%@page import="Model.Turma"%>
@@ -47,21 +52,47 @@
                     if (auxUsertype.equals("aluno")) { 
                         AlunoDAO daoAluno = new AlunoDAO();
                         Aluno aluno = daoAluno.getAlunoPorLogin(auxUsername);
+                        
+                        CursoDAO daoCursos = new CursoDAO();
+                        MatriculaDAO daoMatricula = new MatriculaDAO();
+                        ArrayList<Matricula> listaMatriculas = daoMatricula.getLista();
+
                     %>
       <jsp:include page="templates/navbar.jsp"/>
 
         <div class="container">
-            <div class="card text-center mt-5">
+            <div class="card text-center mt-5 row">
                 
                 <h5 class="card-title pt-5">Notas</h5>
-                
-                Turmas/Cursos:                
-                Notas:
+                    <div class="card-body " style="text-align: center" >
+
+
+                <% 
+                        for(Matricula m : listaMatriculas) { 
+                            if(m.getAlunos_id() == aluno.getId()) {
+                                TurmaDAO daoTurma = new TurmaDAO();
+                                Turma turma = daoTurma.getTurmaPorId(m.getTurmas_id());
+                                CursoDAO daoCurso = new CursoDAO();
+                                Curso curso = daoCurso.getCursoPorId(turma.getCursos_id());
+                            
+                %>
+                <div class="card bg-light mb-2"">
+                            <h5 class="mb-2 card-header">Curso: <%= curso.getId()%></h5>  
+                            <h5 class="mb-2 ">Turma: <%= m.getTurmas_id()%></h5>
+                                          
+                            <h5 class="mb-2">Notas: <%= m.getNota()%></h5>
+                </div>
+
+                        <% }
+}%>
+                    </div>
             </div>
         </div>
 
         
-<%} else {
+<%
+
+} else {
                 response.sendRedirect("./login");
             }
             

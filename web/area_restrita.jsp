@@ -121,12 +121,12 @@
                     </div>
                         <div class="card-body">
                         <h5 class="card-title"><%= instrutor.getNome()%></h5>             
-                        <i class="fas fa-map-marker-alt text-muted"> R$ <%= instrutor.getValor_hora()%> </i>
+                        <p class="text-muted"> R$<%= instrutor.getValor_hora()%>/hora </p>
                         <p class="card-text"><%= instrutor.getEmail()%></p>
                         <div class=" row justify-content-start">
                             
                             <!-- Adicionar links -->
-                            <button type="button" class="btn col-8 offset-2 my-2">Atualizar dados</button>
+                            <a href="./UpdateInstructor" type="button" class="btn btn-warning col-8 offset-2 my-2">Atualizar dados</a>
                             <button type="button" class="btn col-8 offset-2 my-2">Atribuir notas</button>
                             <button type="button" class="btn col-8 offset-2 my-2">Grade de aulas</button>
                         </div>
@@ -174,10 +174,10 @@
                         <div class=" row justify-content-start">
                             
                             <!-- Adicionar links -->
-                            <button type="button" class="btn col-8 offset-2 my-2" href="http://localhost:8084/LeroLeroCursos/register">Alterar dados dos alunos</button>
-                            <button type="button" class="btn col-8 offset-2 my-2" href="http://localhost:8084/LeroLeroCursos/register_instructor">Alterar dados dos instrutores</button>
-                            <button type="button" class="btn col-8 offset-2 my-2" href="http://localhost:8084/LeroLeroCursos/register_courses">Alterar dados dos cursos</button>
-                            <button type="button" class="btn col-8 offset-2 my-2" href="http://localhost:8084/LeroLeroCursos/register_class">Alterar dados das turmas</button>
+                            <a href="./AtualizarAlunos" type="button" class="btn btn-warning col-8 offset-2 my-2">Atualizar alunos</a>
+                            <a href="./AtualizarInstrutores" type="button" class="btn btn-warning col-8 offset-2 my-2">Atualizar instrutores</a>
+                            <a href="./AtualizarCursos" type="button" class="btn btn-warning col-8 offset-2 my-2">Atualizar cursos</a>
+                            <a href="./AtualizarTurmas" type="button" class="btn btn-warning col-8 offset-2 my-2">Atualizar turmas</a>
                             <button type="button" class="btn col-8 offset-2 my-2">Visualizar notas</button>
                             <button type="button" class="btn col-8 offset-2 my-2">Visualizar grade de instrutores</button>
                             <button type="button" class="btn col-8 offset-2 my-2">Gerenciar imagens</button>

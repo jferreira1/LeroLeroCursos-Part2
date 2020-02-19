@@ -2,6 +2,7 @@ package Model.DAO;
 
 import Model.Conexao;
 import Model.Curso;
+import Model.Instrutor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -84,6 +85,31 @@ public class CursoDAO {
                 curso.setCarga_horaria(rs.getInt("carga_horaria") );
                 curso.setPreco(rs.getFloat("preco") );
             }
+            
+        } catch( SQLException e ) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        }
+        return curso;
+    }
+    
+    public Curso getCursoPorNome(String nome) {
+        Curso curso = new Curso();
+        try {
+            String sql = "SELECT * FROM cursos WHERE nome = ?";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, nome);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if ( rs.next() ) {
+                curso.setId(rs.getInt("id"));
+                curso.setNome(rs.getString("nome") );
+                curso.setRequisito(rs.getString("requisito") );
+                curso.setEmenta(rs.getString("ementa") );
+                curso.setCarga_horaria(rs.getInt("carga_horaria") );
+                curso.setPreco(rs.getFloat("preco") );
+            }
+
             
         } catch( SQLException e ) {
             System.out.println("Erro de SQL: " + e.getMessage());

@@ -1,3 +1,7 @@
+<%@page import="Model.DAO.InstrutorDAO"%>
+<%@page import="Model.Instrutor"%>
+<%@page import="Model.DAO.AlunoDAO"%>
+<%@page import="Model.Aluno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -26,17 +30,31 @@
 
     </head>
     <body>
+        <%
 
-        <!-- Navbar-->
+            
+            Object status = session.getAttribute("status");
+            
+            Object username = session.getAttribute("username");
+            String auxUsername = (String) username;
+
+            if (status != null) {
+                Object usertype = session.getAttribute("usertype");
+                String auxUsertype = (String) usertype;
+                String auxStatus = (String) status;
+                if (auxStatus.equals("ok")) {
+                    if (auxUsertype.equals("instrutor")) { 
+                        InstrutorDAO daoInstrutor = new InstrutorDAO();
+                        Instrutor instrutor = daoInstrutor.getInstrutorPorLogin(auxUsername);
+                    %>
         <jsp:include page="templates/navbar.jsp"/>
-        <!--  Fim da Navbar-->
 
         <div class="container">
             <div class="card text-center mt-5">
                 
-                <h5 class="card-title pt-5">Registro de Instrutor</h5>
+                <h5 class="card-title pt-5">Atualizar dados</h5>
 
-                <form class="card-body mx-auto row" id="formulario_instrutor" method="POST" action="http://localhost:8084/LeroLeroCursos/register_instructor">
+                <form class="card-body mx-auto row" id="formulario_instrutor" method="POST" action="http://localhost:8084/LeroLeroCursos/UpdateInstructor">
 
 
                   <label for="nome" generated="true" class="error text-danger col-12 text-left"></label>
@@ -47,7 +65,7 @@
                         <i class="fa fa-user"></i>
                       </span>
                     </div>
-                    <input class="form-control" id="nome" name="nome" placeholder="Nome completo*" type="text">
+                      <input class="form-control" id="nome" name="nome" placeholder="Nome completo*" type="text" value="<%=instrutor.getNome()%>">
                   </div>
 
                   <label for="email" generated="true" class="error text-danger offset-0 col-6 text-left mx-0 pl-15"></label>
@@ -60,7 +78,7 @@
                         <i class="fa fa-envelope"></i>
                       </span>
                     </div>
-                    <input class="form-control" id="email" name="email" placeholder="Endereço de email*" type="email">
+                    <input class="form-control" id="email" name="email" placeholder="Endereço de email*" type="email" value="<%=instrutor.getEmail()%>">
                   </div>
 
                   <div class="form-group input-group col-6">
@@ -69,7 +87,7 @@
                         <i class="fas fa-dollar-sign"></i>
                       </span>
                     </div>
-                    <input class="form-control" id="valor_hora" name="valor_hora" placeholder="Valor/Hora" type="number" min="0">
+                    <input class="form-control" id="valor_hora" name="valor_hora" placeholder="Valor/Hora" type="number" min="<%=instrutor.getValor_hora()%>" max="<%=instrutor.getValor_hora()%>" value="<%=instrutor.getValor_hora()%>">
                   </div>
 
                   <label for="login" generated="true" class="error text-danger offset-0 col-4 text-left mx-0 pl-15"></label>
@@ -83,7 +101,7 @@
                         <i class="fas fa-user"></i>
                       </span>
                     </div>
-                    <input class="form-control" id="login" name="login" placeholder="Login*" type="text">
+                    <input class="form-control" id="login" name="login" placeholder="Login*" type="text" value="<%=instrutor.getLogin()%>">
                   </div>
     
                   <div class="form-group input-group col-4">
@@ -103,9 +121,19 @@
                     </div>
                     <input class="form-control" id="repeatPassword" name="repeatPassword" placeholder="Repita a senha*" type="password">
                   </div>
-    
+                  
+                  <label for="experiencia" generated="true" class="error text-danger col-12 text-left"></label>    
+                  <div class="form-group input-group col-12">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-comments"></i>
+                      </span>
+                    </div>   
+                  <textarea class="form-control" id="experiencia" name="experiencia" placeholder="Compartilhe sua experiência..." type="text" rows="6"><% if(instrutor.getExperiencia() != null) {%><%=instrutor.getExperiencia()%><%}%></textarea>
+                  </div>
+                  
                   <div class="form-group col-12">
-                    <button class="btn btn-warning btn-block" type="submit">Registrar instrutor</button>
+                    <button class="btn btn-warning btn-block" type="submit">Atualizar dados</button>
                   </div>
 
                 </form>
@@ -113,11 +141,20 @@
             </div>
         </div>
 
+
+        
+
         <!-- JQuery -->
         <jsp:include page="templates/jquery.jsp"/>
         <!-- Bootstrap 4-->
-        <jsp:include page="templates/bootstrap4.jsp"/>
-        
+        <jsp:include page="templates/bootstrap4.jsp"/>  
+<%} else {
+                response.sendRedirect("./login");
+            }
+            
+        } else { response.sendRedirect("./login"); }
+} else { response.sendRedirect("./login"); }
+%>   
         <!-- JQuery Validator -->
         <script>
           $(document).ready(function() {
@@ -130,6 +167,8 @@
                  login: {required:true, minlength: 3, maxlength:20},
                  senha: {required:true, minlength:6, maxlength:255},          
                  repeatPassword: {required:true, equalTo: senha},
+                 comentario: {maxlength:255},
+                 
                },
                messages: {
                  nome: {required: "O preenchimento do nome é obrigatório.",
@@ -146,12 +185,13 @@
                         maxlength: "O login deve conter no máximo 20 caracteres."
                        },
                  senha: {required: "O preenchimento da senha é obrigatório.",
-                        minlength: "A senha deve conter ao menos 8 caracteres.",
+                        minlength: "A senha deve conter ao menos 6 caracteres.",
                         maxlength: "A senha deve conter no máximo 255 caracteres."
                        },
                  repeatPassword: {required: "Por favor, confirme sua senha.",
                                   equalTo: "A senha digitada não corresponde."                          
                        },
+                 comentario: {maxlength: "Não ultrapasse o limite de 255 caracteres."},
                },
                
                submitHandler: function(form) {
@@ -165,5 +205,6 @@
              );
       </script>
         
+
     </body>
 </html>

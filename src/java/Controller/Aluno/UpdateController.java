@@ -38,7 +38,7 @@ public class UpdateController extends HttpServlet {
             
         }
         
-        RequestDispatcher resposta = request.getRequestDispatcher("update.jsp");
+        RequestDispatcher resposta = request.getRequestDispatcher(page);
         resposta.forward(request, response);
     }
 

@@ -1,3 +1,6 @@
+<%@page import="Model.Instrutor"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.DAO.InstrutorDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -34,10 +37,27 @@
         <div class="container">
             <div class="card text-center mt-5">
                 
-                <h5 class="card-title pt-5">Registro de Instrutor</h5>
+                <h5 class="card-title pt-5">Atualizar dados de instrutores</h5>
 
-                <form class="card-body mx-auto row" id="formulario_instrutor" method="POST" action="http://localhost:8084/LeroLeroCursos/register_instructor">
-
+                <form class="card-body mx-auto row" id="formulario_instrutor" method="POST" action="http://localhost:8084/LeroLeroCursos/AtualizarInstrutores">
+                    
+                <div class="form-group input-group col-12">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                      </span>
+                    </div>
+                    <select class="form-control" name="selecionar_instrutor">
+                        <option>Selecionar Instrutor*</option>
+                        <%
+                        InstrutorDAO daoInstrutor = new InstrutorDAO();
+                        ArrayList<Instrutor> listaInstrutores = daoInstrutor.getLista();
+                        for(Instrutor i : listaInstrutores) { %>    
+                            <option>  <%= i.getLogin()%> </option>
+                      <%}
+                        %>
+                    </select>
+                  </div>
 
                   <label for="nome" generated="true" class="error text-danger col-12 text-left"></label>
     
@@ -105,7 +125,7 @@
                   </div>
     
                   <div class="form-group col-12">
-                    <button class="btn btn-warning btn-block" type="submit">Registrar instrutor</button>
+                    <button class="btn btn-warning btn-block" type="submit">Atualizar Instrutor</button>
                   </div>
 
                 </form>
@@ -124,17 +144,18 @@
              $("#formulario_instrutor").validate({
                
                rules: {
-                 nome: {required:true, minlength: 3, maxlength:50},
+                 nome: {required:true, minlength: 3, maxlength:50, lettersonly: true},
                  email: {required:true, email:true},
                  valor_hora: {min: 0, number:true},
                  login: {required:true, minlength: 3, maxlength:20},
-                 senha: {required:true, minlength:6, maxlength:255},          
+                 senha: {required:true, minlength:8, maxlength:255},          
                  repeatPassword: {required:true, equalTo: senha},
                },
                messages: {
                  nome: {required: "O preenchimento do nome é obrigatório.",
                         minlength: "O nome deve conter ao menos 3 letras.",
                         maxlength: "O nome deve conter no máximo 50 letras.",
+                        lettersonly: "Apenas letras."
                        },
                  email: {required: "O preenchimento do email é obrigatório.",
                         email: "Por favor, insira um email válido."                          

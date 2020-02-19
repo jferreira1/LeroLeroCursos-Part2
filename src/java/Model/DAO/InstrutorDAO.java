@@ -158,8 +158,8 @@ public class InstrutorDAO {
     
     public boolean update(int id, Instrutor instrutor) {
         try {
-            Instrutor instrutorNoBanco = new Instrutor();
-            instrutorNoBanco = this.getInstrutorPorId(id);
+            Instrutor instrutorNoBanco = this.getInstrutorPorId(id);
+
             String sql = "UPDATE instrutores SET nome=?, email=?, valor_hora=?, login=?, senha=?, experiencia=? WHERE id=?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             
@@ -196,7 +196,10 @@ public class InstrutorDAO {
                 ps.setString(6, instrutor.getExperiencia());
             } else { 
                 ps.setString(6, instrutorNoBanco.getExperiencia());
-            }            
+            }
+            ps.setInt(7, id);
+            ps.executeUpdate();
+            ps.close();
             return true;
         } catch (SQLException e) {
             System.out.println("Erro de SQL: " + e.getMessage());

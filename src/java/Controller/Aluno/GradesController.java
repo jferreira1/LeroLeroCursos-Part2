@@ -36,7 +36,7 @@ public class GradesController extends HttpServlet {
             
         }
         
-        RequestDispatcher resposta = request.getRequestDispatcher("grades.jsp");
+        RequestDispatcher resposta = request.getRequestDispatcher(page);
         resposta.forward(request, response);
         
     }

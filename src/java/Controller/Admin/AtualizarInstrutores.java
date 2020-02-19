@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Admin;
 
 import Model.DAO.InstrutorDAO;
 import Model.Instrutor;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Ferreira
  */
-public class InstrutorController extends HttpServlet {
+public class AtualizarInstrutores extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,8 +31,8 @@ public class InstrutorController extends HttpServlet {
             String auxStatus = (String) status;
             if(auxStatus.equals("ok")) {
                 String auxUsertype = (String) usertype;
-                if (auxUsertype.equals("administrador")) {
-                    page = "register_instructor.jsp";
+                if ((auxUsertype.equals("administrador"))) {
+                    page = "register_instructors(ADMIN).jsp";
                 }
             }
             
@@ -40,12 +40,17 @@ public class InstrutorController extends HttpServlet {
         
         RequestDispatcher resposta = request.getRequestDispatcher(page);
         resposta.forward(request, response);
-        
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+
+        
+        InstrutorDAO dao = new InstrutorDAO();
+        String auxSelecao = (String) request.getParameter("selecionar_instrutor");
+        Instrutor instrutorSelecionado = dao.getInstrutorPorLogin(auxSelecao);
         
         Instrutor instrutor = new Instrutor();
         instrutor.setNome(request.getParameter("nome"));
@@ -55,19 +60,14 @@ public class InstrutorController extends HttpServlet {
         instrutor.setValor_hora(valor_hora);
         instrutor.setLogin(request.getParameter("login"));
         instrutor.setExperiencia(request.getParameter("experiencia"));
-        
         String auxSenha = (String) request.getAttribute("senha");
         instrutor.setSenha(auxSenha);
-            
-        InstrutorDAO dao = new InstrutorDAO();
-        dao.create(instrutor);
-        
-        HttpSession session = request.getSession();
-        session.setAttribute("usertype", instrutor);
-        session.setAttribute("username", instrutor.getLogin());
-        session.setAttribute("status", "ok");
-                
-        response.sendRedirect("./perfil");
-   }
-}
 
+        dao.update(instrutorSelecionado.getId(),instrutor);
+
+        
+        response.sendRedirect("./perfil");
+    }
+
+
+}

@@ -43,7 +43,7 @@ public class EnrollController extends HttpServlet {
             
         }
         
-        RequestDispatcher resposta = request.getRequestDispatcher("enroll.jsp");
+        RequestDispatcher resposta = request.getRequestDispatcher(page);
         resposta.forward(request, response);
         
     }

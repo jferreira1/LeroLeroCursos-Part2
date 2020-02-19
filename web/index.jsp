@@ -53,7 +53,7 @@
             <div class="row justify-content-lg-center">
                 <div class="col-lg-4">
                   <div class="card h-100">
-                    <img src="assets/images/cursos/<%=c.getId()%>.jpg" class="card-img-top" >
+                    <img src="assets/images/cursos/<%=c.getId()%>.jpg" class="card-img-top" alt="Foto do <%= c.getNome()%>">
                     <div class="card-body">
                       <h5 class="card-title"><%=c.getNome()%></h5>
                       <div class="card-text">

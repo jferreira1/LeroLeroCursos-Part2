@@ -127,7 +127,7 @@ public class AlunoDAO {
     public Aluno getAlunoPorLogin(String login) {
         Aluno aluno = new Aluno();
         try {
-            String sql = "SELECT * FROM administrador WHERE login = ?";
+            String sql = "SELECT * FROM alunos WHERE login = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setString(1, login);
             
@@ -195,8 +195,8 @@ public class AlunoDAO {
     
     public boolean update(int id, Aluno aluno) {
         try {
-            Aluno alunoNoBanco = new Aluno();
-            alunoNoBanco = this.getAlunoPorId(id);
+            Aluno alunoNoBanco = this.getAlunoPorId(id);
+            
             
             String sql = "UPDATE alunos SET cpf=?, nome=?, email=?, celular=?, login=?, senha=?, endereco=?, cidade=?, bairro=?, cep=?, comentario=?, aprovado=? WHERE id=?";
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -271,13 +271,18 @@ public class AlunoDAO {
             } else { 
                 ps.setString(12, String.valueOf(alunoNoBanco.getAprovado()));
             }
+            ps.setInt(13, id);
+            ps.executeUpdate();
+            ps.close();
             return true;
-            
+
             
         } catch (SQLException e) {
             System.out.println("Erro de SQL: " + e.getMessage());
-        }
+        } 
         return false;
+        
+
     }
 
 

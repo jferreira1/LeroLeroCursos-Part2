@@ -5,15 +5,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
+
 public class Conexao {
     private static Connection conexao = null;
     
     public static Connection criaConexao() throws SQLException {
         if ( conexao == null ) {
             try {
-                Class.forName("com.mysql.jdbc.Driver");                 
+                Class.forName("com.mysql.cj.jdbc.Driver");                 
                 System.out.println("Driver foi carregado!");
-                conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/escola", "root", "");
+                conexao = DriverManager.getConnection("jdbc:mysql://localhost:3308/escola?useTimezone=true&serverTimezone=UTC", "root", "");
                 System.out.println("Conexão realizada com sucesso!");
             }
             catch( ClassNotFoundException e ) {

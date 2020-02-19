@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author Ferreira
  */
-@WebFilter(filterName = "Criptografia", servletNames = {"AlunoController", "InstrutorController", "AdminController", "LoginController"})
+@WebFilter(filterName = "Criptografia", servletNames = {"AlunoController", "InstrutorController", "AdminController", "LoginController", "UpdateInstructor", "UpdateController"})
 public class Criptografia implements Filter {
     
     private static final boolean debug = true;

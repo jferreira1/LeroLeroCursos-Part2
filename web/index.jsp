@@ -1,3 +1,4 @@
+<%@page import="Model.Instrutor"%>
 <%@page import="Model.DAO.InstrutorDAO"%>
 <%@page import="Model.Turma"%>
 <%@page import="Model.DAO.TurmaDAO"%>
@@ -37,9 +38,7 @@
 
         <div class="container-fluid">
             <!-- Conteudo aqui -->
-            
-            
-            
+            <div class="card-columns">
             <%
             CursoDAO daoCursos = new CursoDAO();
             TurmaDAO daoTurmas = new TurmaDAO();
@@ -47,18 +46,19 @@
             ArrayList<Turma> listaTurmas = daoTurmas.getLista();
             for(Turma t : listaTurmas) { 
             Curso c = daoCursos.getCursoPorId(t.getCursos_id());
+            Instrutor i = daoInstrutor.getInstrutorPorId(t.getInstrutores_id());
             %>    
 
 <!-- Cards -->
-            <div class="card-columns">
+            
                 <div class="col mb-4">
                   <div class="card h-100">
-                    <img src="assets/images/cursos/<%=c.getId()%>.jpg" class="card-img-top">
+                    <img src="assets/images/cursos/<%=c.getId()%>.jpg" class="card-img-top" alt="Foto do <%= c.getNome()%>">
                     <div class="card-body">
                       <h5 class="card-title"><%=c.getNome()%></h5>
                       <div class="card-text">
                           <h5>Professor:</h5>
-                          <p><%= daoInstrutor.getInstrutorPorId(t.getInstrutores_id())%></p>
+                          <p><%= i.getNome() %></p>
                           <h5>Data de Início:</h5>
                           <p><%= t.getData_inicio()%></p>
                           <h5>Data de Término:</h5>
@@ -67,7 +67,7 @@
                       </div>
                       
                       <p class="text-right">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#<%= c.getId() + "Modal"%>">Mais informações</button>
+                        <button type="button" class="btn" data-toggle="modal" data-target="#modal_<%= c.getNome()%>">Mais informações</button>
                       </p>
                     </div>
                   </div>
@@ -76,7 +76,7 @@
             
             <!-- Modal -->
     
-            <div class="modal" tabindex="-1" role="dialog" id="<%= c.getId() + "Modal"%>">
+            <div class="modal" tabindex="-1" role="dialog" id="modal_<%= c.getNome()%>">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -102,18 +102,34 @@
                     <p>
                         R$ <%= c.getPreco()%>
                     </p>
+                    </div>
+                    <div class="modal-footer">
+                    <% 
+                     Object status = session.getAttribute("status");
+
+                    if (status != null) {
+                        Object usertype = session.getAttribute("usertype");
+                        String auxUsertype = (String) usertype;
+                        String auxStatus = (String) status;
+                        if ((auxStatus.equals("ok")) && (auxUsertype.equals("aluno"))) { %>
+                            
+                                <a href="./enroll" type="button" class="btn btn-warning col-10 offset-2 my-2">Matricular-se</a>
+                                
+                    
+                    <%}} %>
                   
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+                
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 </div>
               </div>
             </div>
           </div>
+          
           <%} %>
-        
         </div>
-
+        
+</div> 
         <!-- JQuery -->
         <jsp:include page="templates/jquery.jsp"/>
         <!-- Bootstrap 4-->

@@ -24,9 +24,27 @@ public class MatriculaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher resposta = request.getRequestDispatcher("register_enrollment.jsp");
-        resposta.forward(request, response);
         
+        response.setContentType("text/html");
+        String page = "./perfil";
+        
+        HttpSession session = request.getSession();
+        Object status = session.getAttribute("status");
+        Object usertype = session.getAttribute("usertype");
+        
+        if (status != null) {
+            String auxStatus = (String) status;
+            if(auxStatus.equals("ok")) {
+                String auxUsertype = (String) usertype;
+                if (auxUsertype.equals("administrador")) {
+                    page = "register_enrollment.jsp";
+                }
+            }
+            
+        }
+        
+        RequestDispatcher resposta = request.getRequestDispatcher(page);
+        resposta.forward(request, response);
     }
 
     @Override

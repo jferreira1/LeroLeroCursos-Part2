@@ -124,18 +124,17 @@
              $("#formulario_instrutor").validate({
                
                rules: {
-                 nome: {required:true, minlength: 3, maxlength:50, lettersonly: true},
+                 nome: {required:true, minlength: 3, maxlength:50},
                  email: {required:true, email:true},
                  valor_hora: {min: 0, number:true},
                  login: {required:true, minlength: 3, maxlength:20},
-                 senha: {required:true, minlength:8, maxlength:255},          
+                 senha: {required:true, minlength:6, maxlength:255},          
                  repeatPassword: {required:true, equalTo: senha},
                },
                messages: {
                  nome: {required: "O preenchimento do nome é obrigatório.",
                         minlength: "O nome deve conter ao menos 3 letras.",
                         maxlength: "O nome deve conter no máximo 50 letras.",
-                        lettersonly: "Apenas letras."
                        },
                  email: {required: "O preenchimento do email é obrigatório.",
                         email: "Por favor, insira um email válido."                          

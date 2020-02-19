@@ -3,10 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/Curso.java</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/templates/docscss.jsp</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/area_restrita.jsp</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/register_enrollment.jsp</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/register_course.jsp</file>
             <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/Conexao.java</file>
-            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/AdministradorDAO.java</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/templates/jquery.jsp</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/templates/bootstrapcss.jsp</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/Aluno.java</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/DAO/TurmaDAO.java</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/DAO/AlunoDAO.java</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/templates/navbar.jsp</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/about.jsp</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Controller/AlunoController.java</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/DAO/CursoDAO.java</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/Administrador.java</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/index.jsp</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/web/templates/bootstrap4.jsp</file>
             <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Controller/LoginController.java</file>
+            <file>file:/C:/Users/Ferreira/Documents/NetBeansProjects/LeroLeroCursos/src/java/Model/DAO/AdministradorDAO.java</file>
         </group>
     </open-files>
 </project-private>

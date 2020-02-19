@@ -32,6 +32,50 @@
         <servlet-name>AdminController</servlet-name>
         <servlet-class>Controller.AdminController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>Controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IndexController</servlet-name>
+        <servlet-class>Controller.IndexController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateController</servlet-name>
+        <servlet-class>Controller.Aluno.UpdateController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EnrollController</servlet-name>
+        <servlet-class>Controller.Aluno.EnrollController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GradesController</servlet-name>
+        <servlet-class>Controller.Aluno.GradesController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCommentController</servlet-name>
+        <servlet-class>Controller.Aluno.UpdateCommentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizarAlunos</servlet-name>
+        <servlet-class>Controller.Admin.AtualizarAlunos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizarInstrutores</servlet-name>
+        <servlet-class>Controller.Admin.AtualizarInstrutores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizarCursos</servlet-name>
+        <servlet-class>Controller.Admin.AtualizarCursos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizarTurmas</servlet-name>
+        <servlet-class>Controller.Admin.AtualizarTurmas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateInstructor</servlet-name>
+        <servlet-class>Controller.Instrutor.UpdateInstructor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AlunoController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -63,6 +107,50 @@
     <servlet-mapping>
         <servlet-name>MatriculaController</servlet-name>
         <url-pattern>/register_enrollment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexController</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateController</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnrollController</servlet-name>
+        <url-pattern>/enroll</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GradesController</servlet-name>
+        <url-pattern>/grades</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCommentController</servlet-name>
+        <url-pattern>/update_comment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizarAlunos</servlet-name>
+        <url-pattern>/AtualizarAlunos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizarInstrutores</servlet-name>
+        <url-pattern>/AtualizarInstrutores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizarCursos</servlet-name>
+        <url-pattern>/AtualizarCursos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizarTurmas</servlet-name>
+        <url-pattern>/AtualizarTurmas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateInstructor</servlet-name>
+        <url-pattern>/UpdateInstructor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

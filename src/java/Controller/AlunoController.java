@@ -49,9 +49,8 @@ public class AlunoController extends HttpServlet {
         session.setAttribute("usertype", aluno);
         session.setAttribute("username", aluno.getLogin());
         session.setAttribute("status", "ok");
-                
-        RequestDispatcher resposta = request.getRequestDispatcher("/perfil");
-        resposta.forward(request, response);
+        
+        response.sendRedirect("./index");
    }
 }
 

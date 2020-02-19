@@ -22,19 +22,19 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
+        String page = "./login.jsp";
         
         HttpSession session = request.getSession();
         Object status = session.getAttribute("status");
         if (status != null) {
             String auxStatus = (String) status;
             if(auxStatus.equals("ok")) {
-                response.sendRedirect("./perfil");
+                page = "./perfil";
             }
             
         }
         
-        RequestDispatcher resposta = request.getRequestDispatcher("login.jsp");
-        resposta.forward(request, response);
+        response.sendRedirect(page);
     }
 
 
@@ -46,6 +46,7 @@ public class LoginController extends HttpServlet {
         
         String login = request.getParameter("login");
         String auxSenha = (String) request.getAttribute("senha");
+        String page = "";
                
         // Verifica se o usuário é um aluno e valida a senha.
         AlunoDAO aluno_dao = new AlunoDAO();
@@ -58,11 +59,10 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("username", aluno.getLogin());
                 session.setAttribute("status", "ok");
                 
-                RequestDispatcher resposta = request.getRequestDispatcher("");
-                resposta.forward(request, response);
+                page = "./perfil";
             }
             else {
-                response.sendRedirect("./login");
+                page = "./login";
             }
         }       
         // Verifica se o usuário é um instrutor e valida a senha.
@@ -76,11 +76,10 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("username", instrutor.getLogin());
                 session.setAttribute("status", "ok");
                 
-                RequestDispatcher resposta = request.getRequestDispatcher("");
-                resposta.forward(request, response);
+                page = "./perfil";
             }
             else {
-                response.sendRedirect("./login");    
+                page = "./login";  
             }
         }       
         // Verifica se o usuário é um administrador e valida a senha.
@@ -94,16 +93,17 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("username", administrador.getLogin());
                 session.setAttribute("status", "ok");
                 
-                RequestDispatcher resposta = request.getRequestDispatcher("");
-                resposta.forward(request, response);
+                page = "./perfil";
             }
             else {
-                response.sendRedirect("./login");
+                page = "./login";
             }
         }
         if ((aluno == null) && (instrutor == null) && (administrador == null)) {
-            response.sendRedirect("./login");
+            page = "./login";
         }
+        response.sendRedirect(page);
+
         
         
     }

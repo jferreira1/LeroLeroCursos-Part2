@@ -53,8 +53,6 @@
                 
             
             %>    
-            
-            
 
                 <div class="col mb-4">
                   <div class="card h-100">
